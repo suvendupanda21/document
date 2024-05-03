@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="buttons" align="center">
+        <button id="male">Male</button>
+        <button id="female">Female</button>
+        <button id="all">All</button>
+    </div>
+    <div class="table">
+        <table border="1" cellpadding="15" style="border-collapse: collapse;" align="center">
+            <thead>
+                <tr bgcolor="green">
+                    <th>ID:</th>
+                    <th>Name :</th>
+                    <th>Gender :</th>
+                    <th>Email :</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <!-- table data -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let students = [{ name: "A", id: 1, gender: "male", email: "a@gmail.com" },
+        { name: "B", id: 2, gender: "female", email: "b@gmail.com" },
+        { name: "C", id: 4, gender: "male", email: "c@gmail.com" },
+        { name: "D", id: 6, gender: "male", email: "d@gmail.com" },
+        { name: "E", id: 5, gender: "female", email: "e@gmail.com" },
+        { name: "F", id: 7, gender: "female", email: "f@gmail.com" },
+        { name: "G", id: 3, gender: "male", email: "g@gmail.com" },
+        { name: "H", id: 8, gender: "female", email: "h@gmail.com" },
+        { name: "i", id: 9, gender: "male", email: "i@gmail.com" },
+        { name: "j", id: 10, gender: "female", email: "j@gmail.com" }]
+
+        let tbody = document.getElementById("tbody")
+        displayTable(students)
+        function displayTable(arr) {
+            let str = ""
+            arr.forEach((student) => {
+                str += `<tr>
+                <td>${student.id}</td>
+                <td>${student.name}</td>
+                <td>${student.gender}</td>
+                <td>${student.email}</td>
+                </tr>`
+            })
+            tbody.innerHTML = str
+        }
+
+        let maleBtn = document.getElementById("male")
+        let femaleBtn = document.getElementById("female")
+        let allBtn = document.getElementById("all")
+
+        maleBtn.addEventListener("click", () => {
+            let males = students.filter(student => student.gender == "male")
+            displayTable(males)
+        })
+        femaleBtn.addEventListener("click", () => {
+            let females = students.filter(student => student.gender == "female")
+            displayTable(females)
+        })
+        allBtn.addEventListener("click", () => {
+            displayTable(students)
+        })
+    </script>
+</body>
+
+</html>
